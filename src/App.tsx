@@ -65,7 +65,7 @@ export default function App() {
               <div className="relative">
                 <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
                   <img 
-                    src="/profile.jpeg" 
+                    src="profile.jpeg" 
                     alt="Kai Makana" 
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
@@ -191,7 +191,7 @@ export default function App() {
                 {/* Guide Cover Image */}
                 <div className="w-full max-w-sm aspect-[3/4] rounded-lg shadow-2xl transform rotate-2 transition-transform hover:rotate-0 duration-500 relative z-10 overflow-hidden border-4 border-white group">
                   <img 
-                    src="/cover.png" 
+                    src="cover.png" 
                     alt="The Everyday Wellness Blueprint Cover" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
