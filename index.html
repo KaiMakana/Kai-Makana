@@ -4,10 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kai Makana Health</title>
+
+    <!-- Google Analytics 4 -->
+    <!-- REPLACE G-TYV3WCSD25 with your actual Measurement ID after creating a GA4 property -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TYV3WCSD25"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TYV3WCSD25', {
+        send_page_view: true
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { Leaf, Sun, Droplets, Footprints, Moon, ArrowRight, Check } from 'lucide-react';
 
 export default function App() {
+  // Load Beehiiv embed form
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://subscribe-forms.beehiiv.com/v3/loader.js';
@@ -17,6 +18,41 @@ export default function App() {
         container.removeChild(script);
       }
     };
+  }, []);
+
+  // Track Beehiiv form submissions via postMessage
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      // Beehiiv iframe fires postMessage on successful subscription
+      // Origin check: Beehiiv forms come from subscribe-forms.beehiiv.com
+      if (!event.origin.includes('beehiiv.com')) return;
+
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        // Beehiiv sends various message types; look for form submission success
+        if (
+          data?.type === 'beehiiv-form-submit' ||
+          data?.type === 'subscription-success' ||
+          data?.event === 'subscribe' ||
+          (data?.data?.email && event.origin.includes('beehiiv'))
+        ) {
+          // Fire GA4 event
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'beehiiv_signup', {
+              event_category: 'engagement',
+              event_label: 'newsletter_signup',
+              form_location: window.location.pathname
+            });
+          }
+          console.log('[Analytics] Beehiiv signup tracked');
+        }
+      } catch {
+        // Ignore parse errors — Beehiiv may send non-JSON messages
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
   }, []);
 
   return (
