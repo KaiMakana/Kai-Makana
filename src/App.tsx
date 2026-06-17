@@ -1,52 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Leaf, Sun, Droplets, Footprints, Moon, ArrowRight, Check } from 'lucide-react';
 
 export default function App() {
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus('submitting');
-    
-    const target = e.currentTarget;
-    const gotcha = (target.elements.namedItem('_gotcha') as HTMLInputElement)?.value;
-    if (gotcha) {
-      setStatus('success');
-      return;
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://subscribe-forms.beehiiv.com/v3/loader.js';
+    script.setAttribute('data-beehiiv-form', '0917a56b-b200-4d24-99b9-7ea5f5dd9c33');
+    script.async = true;
+    const container = document.getElementById('beehiiv-embed');
+    if (container) {
+      container.appendChild(script);
     }
-
-    try {
-      const formId = "YOUR_FORM_ID";
-      
-      if (formId === 'YOUR_FORM_ID') {
-        setTimeout(() => {
-          setStatus('success');
-          setEmail('');
-        }, 800);
-        return;
+    return () => {
+      if (container && script.parentNode === container) {
+        container.removeChild(script);
       }
-
-      const response = await fetch(`https://formspree.io/f/${formId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({ email })
-      });
-
-      if (response.ok) {
-        setStatus('success');
-        setEmail('');
-      } else {
-        setStatus('error');
-      }
-    } catch (err) {
-      setStatus('error');
-    }
-  };
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-sand-50 flex flex-col font-sans text-earth-900">
@@ -204,47 +175,7 @@ export default function App() {
             <p className="text-sand-50/70 font-light mb-10 text-lg leading-relaxed">
               A simple, natural drink routine that supports kidney health — used for generations.
             </p>
-            {status === 'success' ? (
-              <div className="bg-sage-800/20 border border-sage-500/30 rounded-2xl p-8 max-w-md mx-auto">
-                <p className="text-sage-300 font-serif text-xl font-medium">
-                  Check your inbox for the Kidney Cleanse recipe!
-                </p>
-              </div>
-            ) : (
-              <form 
-                action="https://formspree.io/f/YOUR_FORM_ID" 
-                method="POST" 
-                onSubmit={handleSubmit}
-                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              >
-                <input 
-                  type="text" 
-                  name="_gotcha" 
-                  style={{ display: 'none' }} 
-                />
-                <input 
-                  type="email" 
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address" 
-                  required
-                  className="flex-grow px-6 py-4 rounded-full bg-white/10 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-sage-400 focus:border-transparent transition-all"
-                />
-                <button 
-                  type="submit"
-                  disabled={status === 'submitting'}
-                  className="px-8 py-4 font-medium text-earth-900 bg-sand-100 hover:bg-white rounded-full transition-colors whitespace-nowrap disabled:opacity-50"
-                >
-                  {status === 'submitting' ? 'Sending...' : 'Send Me the Recipe'}
-                </button>
-              </form>
-            )}
-            {status === 'error' && (
-              <p className="text-red-400 text-sm mt-4">
-                Something went wrong. Please try again or submit directly.
-              </p>
-            )}
+            <div id="beehiiv-embed" className="flex justify-center"></div>
             <p className="text-xs text-sand-50/40 mt-6">
               We respect your privacy. Unsubscribe at any time.
             </p>
