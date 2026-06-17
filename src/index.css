@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  --color-sage-50: #f4f6f4;
+  --color-sage-100: #e3e8e2;
+  --color-sage-200: #c8d2c6;
+  --color-sage-300: #a5b5a2;
+  --color-sage-400: #859881;
+  --color-sage-500: #687c64;
+  --color-sage-600: #51624e;
+  --color-sage-700: #424f40;
+  --color-sage-800: #364134;
+  --color-sage-900: #2d362c;
+
+  --color-sand-50: #fdfbf7;
+  --color-sand-100: #f7f3e8;
+  --color-sand-200: #eee5d1;
+  --color-sand-300: #e2d1b4;
+  --color-sand-400: #d4b993;
+  --color-sand-500: #c6a276;
+  --color-sand-600: #b88b5d;
+  --color-sand-700: #9a704a;
+  --color-sand-800: #7e5c3f;
+  --color-sand-900: #664c35;
+  
+  --color-earth-900: #2c2825;
+}
+
+@layer base {
+  body {
+    @apply bg-sand-50 text-earth-900 font-sans antialiased selection:bg-sage-200 selection:text-earth-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight text-earth-900;
+  }
+}
