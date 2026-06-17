@@ -94,25 +94,17 @@ export default function App() {
             <p className="text-lg md:text-xl text-earth-900/70 max-w-2xl mx-auto font-light leading-relaxed">
               Rediscover your vitality through small, consistent daily habits. No extremes, no overwhelm—just clear, grounded guidance for a healthier you.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-              <a 
-                href="https://whop.com/kai-makana-health/the-everyday-wellness-blueprint/" 
-                className="w-full sm:w-auto px-8 py-4 text-base font-medium text-white bg-sage-600 hover:bg-sage-700 rounded-full transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2"
-              >
-                Get the Guide <ArrowRight className="w-4 h-4" />
-              </a>
-              <a 
-                href="#about" 
-                className="w-full sm:w-auto px-8 py-4 text-base font-medium text-earth-900 bg-sand-100 hover:bg-sand-200 rounded-full transition-all"
-              >
-                Start Here
-              </a>
-              <a 
-                href="#cleanse" 
-                className="w-full sm:w-auto px-8 py-4 text-base font-medium text-earth-900 bg-sand-100 hover:bg-sand-200 rounded-full transition-all"
-              >
+            <div className="max-w-md mx-auto pt-8">
+              <h2 className="text-xl md:text-2xl font-serif text-earth-900 mb-3">
                 Free Kidney Cleanse Guide
-              </a>
+              </h2>
+              <p className="text-earth-900/60 text-sm mb-6 font-light">
+                A simple, natural drink routine that supports kidney health — enter your email to get it free.
+              </p>
+              <div id="beehiiv-embed" className="flex justify-center"></div>
+              <p className="text-xs text-earth-900/40 mt-4">
+                We respect your privacy. Unsubscribe at any time.
+              </p>
             </div>
           </motion.div>
         </section>
