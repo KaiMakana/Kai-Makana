@@ -65,10 +65,10 @@ export default function App() {
         <div className="hidden md:flex space-x-8 text-sm font-medium text-earth-900/70">
           <a href="#about" className="hover:text-sage-600 transition-colors">About</a>
           <a href="#habits" className="hover:text-sage-600 transition-colors">Habits</a>
-          <a href="https://whop.com/kai-makana-health/the-everyday-wellness-blueprint/" className="hover:text-sage-600 transition-colors">The Guide</a>
+          <a href="https://kaimakana.gumroad.com/l/sbmvnn" className="hover:text-sage-600 transition-colors">The Guide</a>
         </div>
         <a 
-          href="https://whop.com/kai-makana-health/the-everyday-wellness-blueprint/" 
+          href="https://kaimakana.gumroad.com/l/sbmvnn" 
           className="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-sage-600 hover:bg-sage-700 rounded-full transition-colors"
         >
           Get the Guide
@@ -271,7 +271,7 @@ export default function App() {
                 </div>
 
                 <a 
-                  href="https://whop.com/kai-makana-health/the-everyday-wellness-blueprint/" 
+                  href="https://kaimakana.gumroad.com/l/sbmvnn" 
                   className="w-full sm:w-auto px-8 py-4 text-base font-medium text-white bg-sage-600 hover:bg-sage-700 rounded-full transition-all shadow-sm flex items-center justify-center gap-2"
                 >
                   Download the Guide <ArrowRight className="w-4 h-4" />
@@ -312,7 +312,7 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-earth-900/60">
             <a href="#" className="hover:text-sage-600 transition-colors">Home</a>
             <a href="#about" className="hover:text-sage-600 transition-colors">About</a>
-            <a href="https://whop.com/kai-makana-health/the-everyday-wellness-blueprint/" className="hover:text-sage-600 transition-colors">The Guide</a>
+            <a href="https://kaimakana.gumroad.com/l/sbmvnn" className="hover:text-sage-600 transition-colors">The Guide</a>
             <a href="#" className="hover:text-sage-600 transition-colors">Privacy Policy</a>
           </div>
           <div className="text-sm text-earth-900/60">
