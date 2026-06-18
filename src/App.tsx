@@ -94,15 +94,41 @@ export default function App() {
             <p className="text-lg md:text-xl text-earth-900/70 max-w-2xl mx-auto font-light leading-relaxed">
               Rediscover your vitality through small, consistent daily habits. No extremes, no overwhelm—just clear, grounded guidance for a healthier you.
             </p>
-            <div className="max-w-md mx-auto pt-8">
-              <h2 className="text-xl md:text-2xl font-serif text-earth-900 mb-3">
+            <div className="max-w-md mx-auto pt-8 space-y-6">
+              {/* Buy Button — Primary CTA */}
+              <a
+                href="https://kaimakana.gumroad.com/l/sbmvnn"
+                data-gumroad-overlay="true"
+                data-gumroad-action="buy"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).gtag) {
+                    (window as any).gtag('event', 'gumroad_click', {
+                      event_category: 'purchase',
+                      event_label: 'guide_cta_hero'
+                    });
+                  }
+                }}
+                className="block w-full px-8 py-4 text-base font-medium text-white bg-sage-600 hover:bg-sage-700 rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+              >
+                Get the Complete Guide — $7.99 <ArrowRight className="w-4 h-4" />
+              </a>
+
+              {/* Divider */}
+              <div className="flex items-center gap-4">
+                <div className="flex-1 border-t border-sand-200"></div>
+                <span className="text-xs text-earth-900/40 uppercase tracking-wider font-medium">or</span>
+                <div className="flex-1 border-t border-sand-200"></div>
+              </div>
+
+              {/* Free Lead Magnet */}
+              <h2 className="text-xl md:text-2xl font-serif text-earth-900 mb-1">
                 Free Kidney Cleanse Guide
               </h2>
-              <p className="text-earth-900/60 text-sm mb-6 font-light">
+              <p className="text-earth-900/60 text-sm font-light">
                 A simple, natural drink routine that supports kidney health — enter your email to get it free.
               </p>
               <div id="beehiiv-embed" className="flex justify-center"></div>
-              <p className="text-xs text-earth-900/40 mt-4">
+              <p className="text-xs text-earth-900/40">
                 We respect your privacy. Unsubscribe at any time.
               </p>
             </div>
