@@ -110,7 +110,7 @@ export default function App() {
                 }}
                 className="block w-full px-8 py-4 text-base font-medium text-white bg-sage-600 hover:bg-sage-700 rounded-full transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
               >
-                Get the Complete Guide — $7.99 <ArrowRight className="w-4 h-4" />
+                Get the Complete Guide — $14.99 <ArrowRight className="w-4 h-4" />
               </a>
 
               {/* Divider */}
