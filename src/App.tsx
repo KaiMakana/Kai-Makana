@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 import { ArrowRight, Check, Leaf, Shield, ChevronDown, Star } from 'lucide-react';
 
-const CLEANSE_URL = 'https://kaimakana.gumroad.com/l/qdxegm';
+const CLEANSE_URL = 'https://kaimakana.gumroad.com/l/qdxegm?wanted=true';
 const BUNDLE_URL = 'https://kaimakana.gumroad.com/l/xaeewz';
 const BLUEPRINT_URL = 'https://kaimakana.gumroad.com/l/sbmvnn';
 const BEEHIIV_FORM_ID = '0917a56b-b200-4d24-99b9-7ea5f5dd9c33';
