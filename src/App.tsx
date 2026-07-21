@@ -114,7 +114,7 @@ export default function App() {
   useBeehiiv('beehiiv-embed');
 
   useMotionValueEvent(scrollY, 'change', (y) => {
-    setShowSticky(y > 520);
+    setShowSticky(y > 280);
   });
 
   useEffect(() => {
@@ -148,8 +148,8 @@ export default function App() {
   return (
     <div className="min-h-screen bg-ink flex flex-col font-sans text-sand">
       {/* Nav */}
-      <nav className="relative z-40 w-full py-5 px-6 md:px-10 flex justify-between items-center max-w-7xl mx-auto">
-        <div className="font-serif text-xl md:text-2xl font-medium tracking-wide text-sand">
+      <nav className="relative z-40 w-full py-3 sm:py-5 px-4 sm:px-6 md:px-10 flex justify-between items-center max-w-7xl mx-auto">
+        <div className="font-serif text-lg sm:text-xl md:text-2xl font-medium tracking-wide text-sand">
           Kai Makana Health
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-sand-muted">
@@ -158,14 +158,14 @@ export default function App() {
           <a href="#faq" className="hover:text-accent transition-colors">FAQ</a>
           <a href="#about" className="hover:text-accent transition-colors">About</a>
         </div>
-        <PrimaryButton href={CLEANSE_URL} label="nav_cta" className="!px-5 !py-2.5 !text-sm hidden sm:inline-flex">
-          Get the Cleanse — ${CLEANSE_PRICE}
+        <PrimaryButton href={CLEANSE_URL} label="nav_cta" className="!px-4 !py-2 !text-sm sm:inline-flex">
+          Get Cleanse — ${CLEANSE_PRICE}
         </PrimaryButton>
       </nav>
 
-      <main className="flex-grow">
-        {/* Hero */}
-        <section className="relative min-h-[92vh] flex items-end md:items-center overflow-hidden">
+      <main className="flex-grow pb-20 md:pb-0">
+        {/* Hero — mobile-first: paid CTA above free lead magnet */}
+        <section className="relative min-h-[100svh] md:min-h-[92vh] flex items-end md:items-center overflow-hidden">
           <div className="absolute inset-0">
             <video
               className="absolute inset-0 w-full h-full object-cover"
@@ -178,75 +178,91 @@ export default function App() {
             >
               <source src={`${import.meta.env.BASE_URL}videos/hero-hq.mp4`} type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/85 to-ink/50" />
             <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-transparent to-ink/30" />
           </div>
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 pb-20 pt-32 md:pt-24">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-10 pb-8 pt-24 sm:pb-16 sm:pt-28 md:pb-20 md:pt-24">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, ease: 'easeOut' }}
-              className="max-w-2xl space-y-7"
+              className="max-w-2xl space-y-4 sm:space-y-6"
             >
-              <span className="inline-block py-1.5 px-3 rounded-full border border-accent/40 bg-accent/10 text-accent text-xs font-semibold tracking-[0.18em] uppercase">
+              <span className="inline-block py-1 px-2.5 sm:py-1.5 sm:px-3 rounded-full border border-accent/40 bg-accent/10 text-accent text-[10px] sm:text-xs font-semibold tracking-[0.18em] uppercase">
                 5-Day Video Protocol
               </span>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.05] text-sand">
-                Reset your body in 5 days — without pills, juice cleanses, or extremes.
+              <h1 className="text-[1.85rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-serif text-sand">
+                Reset your body in 5 days — without pills or extremes.
               </h1>
-              <p className="text-lg md:text-xl text-sand-muted font-light leading-relaxed max-w-xl">
+              <p className="text-base sm:text-lg md:text-xl text-sand-muted font-light leading-relaxed max-w-xl">
                 One natural remedy per day. Short filmed lessons. Kitchen ingredients you already know.
               </p>
-              <div className="flex flex-col gap-4 pt-2">
-                <div>
-                  <PrimaryButton href={CLEANSE_URL} label="hero_primary">
-                    Start the 5-Day Cleanse — <span className="text-ink/70 line-through mr-2">$59</span> ${CLEANSE_PRICE} <ArrowRight className="w-4 h-4" />
-                  </PrimaryButton>
-                  <p className="text-xs text-sand-muted/60 mt-2">One-time payment · No subscription</p>
+
+              {/* PRICE + PRIMARY CTA — first conversion surface on mobile */}
+              <div className="space-y-3 pt-1">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-3xl sm:text-4xl font-serif text-sand">${CLEANSE_PRICE}</span>
+                  <span className="text-lg text-sand-muted/50 line-through">$59</span>
+                  <span className="text-xs text-accent font-medium">one-time</span>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex-1 border-t border-white/20"></div>
-                  <span className="text-xs text-sand-muted/60 uppercase tracking-wider font-medium">or get free</span>
-                  <div className="flex-1 border-t border-white/20"></div>
-                </div>
-                <div className="text-center space-y-3 bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                  <h3 className="text-lg font-serif text-sand">Free Liver Cleanse Guide</h3>
-                  <p className="text-sand-muted text-sm font-light">
-                    The 5-minute natural liver cleanse I promote in my bio — free via email.
-                  </p>
-                  <div id="beehiiv-embed" className="flex justify-center min-h-[120px]" />
-                </div>
+                <PrimaryButton href={CLEANSE_URL} label="hero_primary" className="w-full sm:w-auto !py-4 !text-base">
+                  Start the 5-Day Cleanse <ArrowRight className="w-4 h-4" />
+                </PrimaryButton>
+                <p className="text-[11px] sm:text-xs text-sand-muted/70 text-center sm:text-left">
+                  Instant access · Watch on any device · 7-day guarantee
+                </p>
+              </div>
+
+              {/* Secondary links — not competing with primary */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 pt-1">
                 <a
                   href="#bundle"
-                  className="text-xs text-sand-muted hover:text-accent transition-colors underline-offset-4 hover:underline text-center"
+                  className="text-sm text-accent font-medium hover:underline underline-offset-4"
                 >
-                  Save with the Cleanse + Blueprint bundle →
+                  Bundle &amp; save $4.99 →
+                </a>
+                <span className="hidden sm:inline text-sand-muted/40">·</span>
+                <a
+                  href="#free-guide"
+                  className="text-sm text-sand-muted hover:text-accent transition-colors"
+                >
+                  Or get the free liver guide ↓
                 </a>
               </div>
-              <p className="text-xs text-sand-muted/70 tracking-wide">
-                Instant access · Watch on any device · One-time payment
-              </p>
             </motion.div>
           </div>
         </section>
 
+        {/* Free lead magnet — BELOW the fold on mobile so it doesn't kill paid CTA */}
+        <section id="free-guide" className="py-10 sm:py-14 px-4 sm:px-6 md:px-10 border-t border-white/5">
+          <div className="max-w-xl mx-auto">
+            <div className="text-center space-y-3 bg-white/5 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/10">
+              <h3 className="text-lg sm:text-xl font-serif text-sand">Free Liver Cleanse Guide</h3>
+              <p className="text-sand-muted text-sm font-light">
+                The 5-minute natural liver cleanse from my bio — free via email.
+              </p>
+              <div id="beehiiv-embed" className="flex justify-center min-h-[100px]" />
+            </div>
+          </div>
+        </section>
+
         {/* Problem */}
-        <section className="py-20 md:py-28 px-6 md:px-10 border-t border-white/5">
+        <section className="py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-10 border-t border-white/5">
           <div className="max-w-5xl mx-auto text-center">
-            <motion.div {...fadeUp} className="space-y-8">
-              <h2 className="text-3xl md:text-5xl font-serif">
+            <motion.div {...fadeUp} className="space-y-6 sm:space-y-8">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif">
                 Your body isn&apos;t broken.{' '}
                 <span className="text-accent italic">It&apos;s inflamed.</span>
               </h2>
-              <p className="text-sand-muted text-lg max-w-2xl mx-auto font-light">
+              <p className="text-sand-muted text-base sm:text-lg max-w-2xl mx-auto font-light">
                 Most people chase symptoms. This protocol goes after the root — in order — over five focused days.
               </p>
-              <div className="flex flex-wrap justify-center gap-3 pt-4">
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 pt-2 sm:pt-4">
                 {['Fatigue', 'Joint pain', 'Brain fog', 'Stubborn weight'].map((chip) => (
                   <span
                     key={chip}
-                    className="px-4 py-2 rounded-full bg-ink-2 border border-white/10 text-sm text-sand-muted"
+                    className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-ink-2 border border-white/10 text-xs sm:text-sm text-sand-muted"
                   >
                     {chip}
                   </span>
@@ -257,18 +273,18 @@ export default function App() {
         </section>
 
         {/* 5 Days */}
-        <section id="cleanse" className="py-20 md:py-28 px-6 md:px-10 bg-ink-2">
+        <section id="cleanse" className="py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-10 bg-ink-2">
           <div className="max-w-6xl mx-auto">
-            <motion.div {...fadeUp} className="text-center mb-14 space-y-4">
-              <h2 className="text-3xl md:text-5xl font-serif">
+            <motion.div {...fadeUp} className="text-center mb-8 sm:mb-14 space-y-3 sm:space-y-4">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif">
                 Five days. Five systems. One clear path.
               </h2>
-              <p className="text-sand-muted text-lg font-light">
+              <p className="text-sand-muted text-base sm:text-lg font-light">
                 ~9 minutes of video total. Built to finish.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
               {DAYS.map((day, i) => (
                 <motion.div
                   key={day.n}
@@ -276,19 +292,19 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-10%' }}
                   transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className="bg-ink-3 border border-white/8 rounded-2xl p-6 hover:border-accent/40 transition-colors flex flex-col"
+                  className="bg-ink-3 border border-white/8 rounded-2xl p-5 sm:p-6 hover:border-accent/40 transition-colors flex flex-col"
                 >
-                  <div className="text-accent font-semibold text-sm tracking-widest mb-3">DAY {day.n}</div>
-                  <h3 className="font-serif text-xl text-sand mb-2">{day.title}</h3>
+                  <div className="text-accent font-semibold text-sm tracking-widest mb-2 sm:mb-3">DAY {day.n}</div>
+                  <h3 className="font-serif text-lg sm:text-xl text-sand mb-2">{day.title}</h3>
                   <p className="text-sm text-sand-muted font-light leading-relaxed mb-3 flex-grow">{day.line}</p>
                   <p className="text-xs text-accent font-medium">{day.result}</p>
                 </motion.div>
               ))}
             </div>
 
-            <motion.div {...fadeUp} className="flex justify-center mt-12">
-              <PrimaryButton href={CLEANSE_URL} label="days_cta">
-                Get the 5-Day Full Body Cleanse — ${CLEANSE_PRICE} <ArrowRight className="w-4 h-4" />
+            <motion.div {...fadeUp} className="flex justify-center mt-8 sm:mt-12">
+              <PrimaryButton href={CLEANSE_URL} label="days_cta" className="w-full sm:w-auto">
+                Get the 5-Day Cleanse — ${CLEANSE_PRICE} <ArrowRight className="w-4 h-4" />
               </PrimaryButton>
             </motion.div>
           </div>
@@ -602,7 +618,7 @@ export default function App() {
         </div>
       </footer>
 
-      {/* Sticky mobile CTA */}
+      {/* Sticky mobile CTA — always visible on small screens after short scroll */}
       <AnimatePresence>
         {showSticky && (
           <motion.div
@@ -610,17 +626,20 @@ export default function App() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-0 inset-x-0 z-50 md:hidden border-t border-white/10 bg-ink/95 backdrop-blur-md px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+            className="fixed bottom-0 inset-x-0 z-50 md:hidden border-t border-white/10 bg-ink/95 backdrop-blur-md px-3 py-2.5 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-8px_30px_rgba(0,0,0,0.45)]"
           >
-            <div className="flex items-center justify-between gap-3 max-w-lg mx-auto">
+            <div className="flex items-center justify-between gap-2 max-w-lg mx-auto">
               <div className="min-w-0">
-                <div className="text-sm font-medium text-sand truncate">5-Day Full Body Cleanse</div>
-                <div className="text-xs text-sand-muted">${CLEANSE_PRICE} · Instant access</div>
+                <div className="text-sm font-medium text-sand truncate">5-Day Cleanse</div>
+                <div className="text-xs text-sand-muted">
+                  <span className="line-through text-sand-muted/50 mr-1">$59</span>
+                  ${CLEANSE_PRICE} · Instant access
+                </div>
               </div>
               <a
                 href={CLEANSE_URL}
                 onClick={() => track('gumroad_click', 'sticky_mobile')}
-                className="shrink-0 px-5 py-2.5 rounded-full bg-accent text-ink text-sm font-semibold"
+                className="shrink-0 px-5 py-3 rounded-full bg-accent text-ink text-sm font-semibold active:scale-[0.98]"
               >
                 Get access
               </a>
