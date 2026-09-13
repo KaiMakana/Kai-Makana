@@ -186,6 +186,42 @@ export default function App() {
     return () => window.removeEventListener('message', handleMessage);
   }, []);
 
+  // Deep links arrive BEFORE React mounts, so the browser's native hash-scroll
+  // finds nothing and the page just sits at the top. Instagram-bio links like
+  // `#free-guide` (and any shared `#cleanse` URL) silently do nothing without
+  // this. Re-apply the hash once, after mount.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+
+    const scrollToHash = () => {
+      const target = document.getElementById(hash.slice(1));
+      if (!target) return;
+
+      // NOTE: `html { scroll-behavior: smooth }` overrides behavior:'auto', so we
+      // must use 'instant' or the scroll animates and any measurement below races
+      // it. Decide using absolute geometry BEFORE scrolling, never after.
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const absoluteTop = target.getBoundingClientRect().top + window.scrollY;
+      const behavior = 'instant' as ScrollBehavior;
+
+      if (absoluteTop >= maxScroll) {
+        // Target is close enough to the end that it can never be top-aligned.
+        // Pin to the bottom so it's on screen rather than just below the fold.
+        window.scrollTo({ top: maxScroll, behavior });
+      } else {
+        target.scrollIntoView({ block: 'start', behavior });
+      }
+    };
+
+    // First paint keeps shifting layout (hero video decode + scroll-in motion),
+    // so a single scroll can land short or overshoot. Apply once immediately,
+    // then correct after the page settles.
+    requestAnimationFrame(scrollToHash);
+    const settle = setTimeout(scrollToHash, 700);
+    return () => clearTimeout(settle);
+  }, []);
+
   const fadeUp = {
     initial: { opacity: 0, y: 24 },
     whileInView: { opacity: 1, y: 0 },
@@ -205,6 +241,7 @@ export default function App() {
           <a href="#bundle" className="hover:text-accent transition-colors">Bundle</a>
           <a href="#faq" className="hover:text-accent transition-colors">FAQ</a>
           <a href="#about" className="hover:text-accent transition-colors">About</a>
+          <a href="#connect" className="hover:text-accent transition-colors">Connect</a>
         </div>
         <PrimaryButton href={CLEANSE_URL} label="nav_cta" className="!px-4 !py-2 !text-sm sm:inline-flex">
           Get Cleanse — ${CLEANSE_PRICE}
@@ -663,7 +700,10 @@ export default function App() {
 
         {/* Social profiles — verification surface for visitors, kept below the fold
             and visually quiet so it never competes with the Cleanse CTA. */}
-        <div className="max-w-7xl mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-1">
+        <div
+          id="connect"
+          className="max-w-7xl mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-1 scroll-mt-28"
+        >
           {SOCIALS.map((s) => (
             <a
               key={s.name}
