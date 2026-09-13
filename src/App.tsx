@@ -10,6 +10,22 @@ const CLEANSE_PRICE = 39;
 const BUNDLE_PRICE = 49;
 const BLUEPRINT_PRICE = 14.99;
 
+// Public social profiles. Rendered quietly in the footer on purpose: most traffic
+// already arrives FROM these, so their job here is verification for visitors who
+// want to check the brand is real — not a second audience-growth funnel.
+const SOCIALS = [
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/profile.php?id=61587129070097',
+    followers: '105K+',
+  },
+  {
+    name: 'Instagram',
+    url: 'https://www.instagram.com/kaimakanahealth',
+    followers: '55K+',
+  },
+];
+
 const DAYS = [
   { n: '01', title: 'Inflammation Reset', line: 'Day one quiets the background fire so energy and recovery can return.', result: 'Result: more energy, less brain fog' },
   { n: '02', title: 'Cholesterol Block', line: 'Day two targets the buildup that slows your system over time.', result: 'Result: feeling lighter, less sluggish' },
@@ -43,6 +59,38 @@ function track(event: string, label: string) {
       event_label: label,
     });
   }
+}
+
+// Inline brand glyphs (currentColor, stroke matched to the line-icon weight used
+// elsewhere on this page). Kept local so the footer can't break if the icon
+// library ever drops its brand set.
+function SocialIcon({ name, className = '' }: { name: string; className?: string }) {
+  const common = {
+    className,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.75,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    'aria-hidden': true,
+  };
+
+  if (name === 'Facebook') {
+    return (
+      <svg {...common}>
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg {...common}>
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+    </svg>
+  );
 }
 
 function useBeehiiv(containerId: string) {
@@ -612,6 +660,29 @@ export default function App() {
             <a href="mailto:hello@kaimakanahealth.com" className="hover:text-accent transition-colors">Contact</a>
           </div>
         </div>
+
+        {/* Social profiles — verification surface for visitors, kept below the fold
+            and visually quiet so it never competes with the Cleanse CTA. */}
+        <div className="max-w-7xl mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-7 gap-y-1">
+          {SOCIALS.map((s) => (
+            <a
+              key={s.name}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track('social_click', s.name.toLowerCase())}
+              aria-label={`Kai Makana Health on ${s.name} — ${s.followers} followers (opens in a new tab)`}
+              className="group inline-flex min-h-[44px] items-center gap-2 text-sm text-sand-muted hover:text-accent transition-colors"
+            >
+              <SocialIcon name={s.name} className="w-4 h-4 shrink-0" />
+              <span>{s.name}</span>
+              <span className="text-xs tabular-nums text-sand-muted/80 group-hover:text-accent transition-colors">
+                {s.followers}
+              </span>
+            </a>
+          ))}
+        </div>
+
         <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-white/5 text-center text-xs text-sand-muted/50 space-y-2">
           <p>Educational wellness information only. Not a substitute for medical advice.</p>
           <p>&copy; {new Date().getFullYear()} Kai Makana Health. All rights reserved.</p>

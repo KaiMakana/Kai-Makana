@@ -1,0 +1,21 @@
+{
+  "name": "Kai Makana Health — 5-Day Full Body Cleanse",
+  "short_name": "Kai Makana",
+  "description": "Reset your body in 5 days with short natural remedy videos. Kitchen ingredients. One-time purchase.",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#0B0F0E",
+  "background_color": "#0B0F0E",
+  "display": "standalone",
+  "start_url": "."
+}
