@@ -27,11 +27,11 @@ const SOCIALS = [
 ];
 
 const DAYS = [
-  { n: '01', title: 'Inflammation Reset', line: 'Day one quiets the background fire so energy and recovery can return.', result: 'Result: more energy, less brain fog' },
-  { n: '02', title: 'Cholesterol Block', line: 'Day two targets the buildup that slows your system over time.', result: 'Result: feeling lighter, less sluggish' },
-  { n: '03', title: 'Circulation Boost', line: 'Day three opens flow so nutrients and oxygen actually reach your cells.', result: 'Result: warmth and alertness returning' },
-  { n: '04', title: 'Liver Support', line: 'Day four backs the filter that clears what you eat, drink, and absorb.', result: 'Result: clearer skin, better digestion' },
-  { n: '05', title: 'Kidney Cleanse', line: 'Day five finishes the reset by supporting how your body flushes waste.', result: 'Result: the reset feels complete — lighter and clearer' },
+  { n: '01', title: 'Ease', line: 'Day one settles you into a calm, simple rhythm.', result: 'Result: more energy, clearer mornings' },
+  { n: '02', title: 'Lightness', line: 'Day two keeps it easy — everyday ingredients, no pressure.', result: 'Result: feeling lighter, less sluggish' },
+  { n: '03', title: 'Clarity', line: 'Day three builds a calm midday habit you can keep.', result: 'Result: warmth and alertness returning' },
+  { n: '04', title: 'Steady', line: 'Day four feels like a quiet morning ritual, not a project.', result: 'Result: clearer skin, better digestion' },
+  { n: '05', title: 'Reset', line: 'Day five finishes what you started — a reset you can complete.', result: 'Result: the reset feels complete — lighter and clearer' },
 ];
 
 const INCLUDED = [
@@ -366,13 +366,13 @@ export default function App() {
             <motion.div {...fadeUp} className="space-y-6 sm:space-y-8">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif">
                 Your body isn&apos;t broken.{' '}
-                <span className="text-accent italic">It&apos;s inflamed.</span>
+                <span className="text-accent italic">It&apos;s out of rhythm.</span>
               </h2>
               <p className="text-sand-muted text-base sm:text-lg max-w-2xl mx-auto font-light">
                 Most people chase symptoms. This protocol goes after the root — in order — over five focused days.
               </p>
               <div className="flex flex-wrap justify-center gap-2 sm:gap-3 pt-2 sm:pt-4">
-                {['Fatigue', 'Joint pain', 'Brain fog', 'Stubborn weight'].map((chip) => (
+                {['Low energy', 'Feeling sluggish', 'Foggy mornings', 'Feeling heavy'].map((chip) => (
                   <span
                     key={chip}
                     className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-ink-2 border border-white/10 text-xs sm:text-sm text-sand-muted"
@@ -390,7 +390,7 @@ export default function App() {
           <div className="max-w-6xl mx-auto">
             <motion.div {...fadeUp} className="text-center mb-8 sm:mb-14 space-y-3 sm:space-y-4">
               <h2 className="text-2xl sm:text-3xl md:text-5xl font-serif">
-                Five days. Five systems. One clear path.
+                Five days. Five simple focuses. One clear path.
               </h2>
               <p className="text-sand-muted text-base sm:text-lg font-light">
                 ~9 minutes of video total. Built to finish.
