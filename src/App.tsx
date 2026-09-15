@@ -125,7 +125,19 @@ function PrimaryButton({
   return (
     <a
       href={href}
-      onClick={() => track('gumroad_click', label)}
+      onClick={() => {
+        track('gumroad_click', label);
+        const w = window as any;
+        if (typeof w.fbq === 'function') {
+          w.fbq('track', 'InitiateCheckout', {
+            content_name: '5-Day Full Body Cleanse',
+            content_ids: ['qdxegm'],
+            content_type: 'product',
+            value: CLEANSE_PRICE,
+            currency: 'USD',
+          });
+        }
+      }}
       className={`inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-ink bg-accent hover:bg-white rounded-full transition-all shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:scale-[1.02] active:scale-[0.99] ${className}`}
     >
       {children}
