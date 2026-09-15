@@ -501,9 +501,9 @@ export default function App() {
               className="rounded-3xl border border-white/10 bg-ink p-8 md:p-10 space-y-6"
             >
               <div className="text-xs uppercase tracking-[0.2em] text-accent font-semibold">Free bonus</div>
-              <h3 className="text-xl font-serif text-sand">Liver Cleanse guide included</h3>
+              <h3 className="text-xl font-serif text-sand">Free reset guide included</h3>
               <p className="text-sand-muted font-light leading-relaxed">
-                Buy the 5-Day Cleanse and get the free liver cleanse guide when you join the email list. Two protocols, one price.
+                Buy the 5-Day Cleanse and get the free reset guide when you join the email list. Two protocols, one price.
               </p>
               <div className="h-px bg-white/10" />
               <div className="text-xs uppercase tracking-[0.2em] text-sand-muted font-semibold">For you if</div>
@@ -608,7 +608,7 @@ export default function App() {
               {[
                 { stars: 5, quote: 'The Blueprint is the most practical health guide I\'ve read. Not overwhelming — just clear, doable routines that actually stuck.', name: 'Sarah K.' },
                 { stars: 5, quote: 'I finished the 5-Day Cleanse in a week. Day 3 was the turning point — I woke up feeling genuinely lighter and clearer than I had in months.', name: 'James M.' },
-                { stars: 4, quote: 'Love that every ingredient was already in my kitchen. No expensive supplements. The liver day was my favorite — simple but effective.', name: 'Dana R.' },
+                { stars: 4, quote: 'Love that every ingredient was already in my kitchen. No expensive supplements. The fourth day was my favorite — simple but effective.', name: 'Dana R.' },
               ].map((t, i) => (
                 <motion.div
                   key={i}
@@ -716,9 +716,9 @@ export default function App() {
         <section id="free-guide" className="py-10 sm:py-14 px-4 sm:px-6 md:px-10 border-t border-white/5">
           <div className="max-w-xl mx-auto">
             <div className="text-center space-y-3 bg-white/5 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/10">
-              <h3 className="text-lg sm:text-xl font-serif text-sand">Free Liver Cleanse Guide</h3>
+              <h3 className="text-lg sm:text-xl font-serif text-sand">Free 5-Minute Reset Guide</h3>
               <p className="text-sand-muted text-sm font-light">
-                The 5-minute natural liver cleanse from my bio — free via email.
+                The 5-minute natural reset from my bio — free via email.
               </p>
               <div id="beehiiv-embed" className="flex justify-center min-h-[100px]" />
             </div>
