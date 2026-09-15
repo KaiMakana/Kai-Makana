@@ -165,6 +165,20 @@ export default function App() {
     setShowSticky(y > 280);
   });
 
+  // Meta Pixel — ViewContent on mount (single-page site = the whole page is the product).
+  // InitiateCheckout is wired to the CTA after the hero remodel; Purchase fires from Gumroad.
+  useEffect(() => {
+    const w = window as any;
+    if (typeof w.fbq !== 'function') return;
+    w.fbq('track', 'ViewContent', {
+      content_name: '5-Day Full Body Cleanse',
+      content_ids: ['qdxegm'],
+      content_type: 'product',
+      value: CLEANSE_PRICE,
+      currency: 'USD',
+    });
+  }, []);
+
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       if (!event.origin.includes('beehiiv.com')) return;
