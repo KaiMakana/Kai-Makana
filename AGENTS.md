@@ -68,8 +68,8 @@ Plus a `Get Cleanse — $39` button in the nav.
 ## LOCKED — product copy rules
 
 - Product: **5-Day Full Body Cleanse** ($39). Plus **Blueprint** ($14.99) and **Bundle** ($49).
-- **Never list actual ingredients/amounts/recipes on the marketing page** (e.g. "lemon + water + cornstarch"). That's paid course content. Marketing = importance ("liver support", "circulation boost"); course = recipes.
-- Day card titles (locked): Inflammation Reset, Cholesterol Block, Circulation Boost, Liver Support, Kidney Cleanse. Each day card ends with a `Result: ...` line.
+- **Never list actual ingredients/amounts/recipes on the marketing page** (e.g. "lemon + water + cornstarch"). That's paid course content. Marketing = importance; course = recipes.
+- Day card titles (marketing, softened Sep 2026 for Meta ad compliance): **Ease, Lightness, Clarity, Steady, Reset**. The medical names (Inflammation Reset, Cholesterol Block, Circulation Boost, Liver Support, Kidney Cleanse) live ONLY inside the course content — never on the marketing page. Each day card ends with a `Result: ...` line.
 - H1 default: "Reset your body in 5 days — without pills, juice cleanses, or extremes." (pending the hero remodel above)
 - Payments: **Gumroad only.** Never Whop.
 
