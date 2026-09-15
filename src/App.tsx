@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
-import { ArrowRight, Check, Leaf, Shield, ChevronDown, Star } from 'lucide-react';
+import { ArrowRight, Check, Leaf, Shield, ShieldCheck, ChevronDown, Star, Users } from 'lucide-react';
 
 const CLEANSE_URL = 'https://kaimakana.gumroad.com/l/qdxegm?wanted=true';
 const BUNDLE_URL = 'https://kaimakana.gumroad.com/l/xaeewz';
@@ -292,43 +292,58 @@ export default function App() {
                 5-Day Video Protocol
               </span>
               <h1 className="text-[1.85rem] leading-[1.1] sm:text-5xl md:text-6xl lg:text-7xl font-serif text-sand">
-                Reset your body in 5 days — without pills or extremes.
+                Reset your body in 5 days — without pills, juice cleanses, or extremes.
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-sand-muted font-light leading-relaxed max-w-xl">
-                One natural remedy per day. Short filmed lessons. Kitchen ingredients you already know.
+
+              <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-ink-2 px-4 py-1.5 text-sm text-sand/90">
+                <Users className="h-4 w-4 shrink-0 text-accent" />
+                From the kitchen-remedy channel 160,000+ people follow
               </p>
+
+              <p className="text-base sm:text-lg md:text-xl text-sand-muted font-light leading-relaxed max-w-xl">
+                Five short filmed lessons. One kitchen remedy a day. No pills, no supplements, nothing you can&apos;t find at the store.
+              </p>
+
+              <ul className="flex max-w-xl flex-wrap gap-2">
+                {DAYS.map((d, i) => (
+                  <li
+                    key={d.title}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-ink-2 px-3 py-1.5 text-xs text-sand-muted"
+                  >
+                    <span className="font-semibold text-accent">{i + 1}</span>
+                    {d.title}
+                  </li>
+                ))}
+              </ul>
 
               {/* PRICE + PRIMARY CTA — first conversion surface on mobile */}
               <div className="space-y-3 pt-1">
                 <div className="flex items-baseline gap-3">
                   <span className="text-3xl sm:text-4xl font-serif text-sand">${CLEANSE_PRICE}</span>
                   <span className="text-lg text-sand-muted/50 line-through">$59</span>
-                  <span className="text-xs text-accent font-medium">one-time</span>
+                  <span className="text-xs text-accent font-medium">one-time · lifetime access</span>
+                </div>
+                <div>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accent">
+                    <ShieldCheck className="h-4 w-4 shrink-0" />
+                    7-day money-back guarantee
+                  </span>
                 </div>
                 <PrimaryButton href={CLEANSE_URL} label="hero_primary" className="w-full sm:w-auto !py-4 !text-base">
-                  Start the 5-Day Cleanse <ArrowRight className="w-4 h-4" />
+                  Start the 5-Day Cleanse — $39 <ArrowRight className="w-4 h-4" />
                 </PrimaryButton>
                 <p className="text-[11px] sm:text-xs text-sand-muted/70 text-center sm:text-left">
-                  Instant access · Watch on any device · 7-day guarantee
+                  Instant access · Watch on any device
                 </p>
               </div>
 
-              {/* Secondary links — not competing with primary */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 pt-1">
-                <a
-                  href="#bundle"
-                  className="text-sm text-accent font-medium hover:underline underline-offset-4"
-                >
-                  Bundle &amp; save $4.99 →
-                </a>
-                <span className="hidden sm:inline text-sand-muted/40">·</span>
-                <a
-                  href="#free-guide"
-                  className="text-sm text-sand-muted hover:text-accent transition-colors"
-                >
-                  Or get the free liver guide ↓
-                </a>
-              </div>
+              <a
+                href="#cleanse"
+                className="inline-flex items-center gap-1 text-sm text-sand-muted transition-colors hover:text-sand"
+              >
+                See what each of the five days does
+                <ChevronDown className="h-4 w-4" />
+              </a>
             </motion.div>
           </div>
         </section>
