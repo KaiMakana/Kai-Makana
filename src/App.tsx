@@ -348,19 +348,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* Free lead magnet — BELOW the fold on mobile so it doesn't kill paid CTA */}
-        <section id="free-guide" className="py-10 sm:py-14 px-4 sm:px-6 md:px-10 border-t border-white/5">
-          <div className="max-w-xl mx-auto">
-            <div className="text-center space-y-3 bg-white/5 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/10">
-              <h3 className="text-lg sm:text-xl font-serif text-sand">Free Liver Cleanse Guide</h3>
-              <p className="text-sand-muted text-sm font-light">
-                The 5-minute natural liver cleanse from my bio — free via email.
-              </p>
-              <div id="beehiiv-embed" className="flex justify-center min-h-[100px]" />
-            </div>
-          </div>
-        </section>
-
         {/* Problem */}
         <section className="py-14 sm:py-20 md:py-28 px-4 sm:px-6 md:px-10 border-t border-white/5">
           <div className="max-w-5xl mx-auto text-center">
@@ -712,6 +699,19 @@ export default function App() {
             <p className="text-xs text-sand-muted/70">Instant access · One-time payment · 7-day guarantee</p>
           </motion.div>
         </section>
+
+        {/* Free lead magnet — BELOW the fold on mobile so it doesn't kill paid CTA */}
+        <section id="free-guide" className="py-10 sm:py-14 px-4 sm:px-6 md:px-10 border-t border-white/5">
+          <div className="max-w-xl mx-auto">
+            <div className="text-center space-y-3 bg-white/5 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/10">
+              <h3 className="text-lg sm:text-xl font-serif text-sand">Free Liver Cleanse Guide</h3>
+              <p className="text-sand-muted text-sm font-light">
+                The 5-minute natural liver cleanse from my bio — free via email.
+              </p>
+              <div id="beehiiv-embed" className="flex justify-center min-h-[100px]" />
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* Footer */}
@@ -721,6 +721,7 @@ export default function App() {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-sand-muted">
             <a href="#cleanse" className="hover:text-accent transition-colors">Cleanse</a>
             <a href="#bundle" className="hover:text-accent transition-colors">Bundle</a>
+            <a href="#free-guide" className="hover:text-accent transition-colors">Free guide</a>
             <a href="#faq" className="hover:text-accent transition-colors">FAQ</a>
             <a href={`${import.meta.env.BASE_URL}privacy.html`} className="hover:text-accent transition-colors">Privacy</a>
             <a href="mailto:hello@kaimakanahealth.com" className="hover:text-accent transition-colors">Contact</a>
