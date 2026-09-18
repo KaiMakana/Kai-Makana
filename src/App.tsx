@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'motion/react';
 import { ArrowRight, Check, Leaf, Shield, ShieldCheck, ChevronDown, Star, Users } from 'lucide-react';
 
@@ -177,6 +177,20 @@ export default function App() {
     setShowSticky(y > 280);
   });
 
+  // Hero background video autoplay. React sets `muted` as an HTML attribute, but
+  // browsers check the DOM *property* before allowing autoplay — when they don't
+  // match, autoplay is refused and the video freezes on its poster frame. Force
+  // the property, then retry play() (some browsers reject the first attempt).
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = heroVideoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    const started = v.play();
+    if (started && typeof started.catch === 'function') started.catch(() => {});
+  }, []);
+
   // Meta Pixel — ViewContent on mount (single-page site = the whole page is the product).
   // InitiateCheckout is wired to the CTA after the hero remodel; Purchase fires from Gumroad.
   useEffect(() => {
@@ -279,11 +293,13 @@ export default function App() {
         <section className="relative min-h-[100svh] md:min-h-[92vh] flex items-end md:items-center overflow-hidden">
           <div className="absolute inset-0">
             <video
+              ref={heroVideoRef}
               className="absolute inset-0 w-full h-full object-cover"
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
               poster={`${import.meta.env.BASE_URL}videos/hero-poster.jpg`}
               aria-hidden="true"
             >
